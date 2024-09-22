@@ -1,6 +1,6 @@
 // page.tsx
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useHealthcareApi } from "../hooks/useHealthcareApi";
 
 export default function HomePage() {
