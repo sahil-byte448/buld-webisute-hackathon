@@ -69,6 +69,7 @@ export const useHealthcareApi = () => {
     const args = { patientId, providerId };
     return callApi(endpoint, args);
   };
+  
 
   const setConsentStatus = async (patientId: string, providerId: string, consent: string) => {
     const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/invoke/ZNd9fzZRIFt5o4yOFIp9E7BQxxomqioz1727028811273/SetConsentStatus`;
