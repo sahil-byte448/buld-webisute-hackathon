@@ -15,12 +15,12 @@ export default function HomePage() {
     try {
       const data = await getPatientData(patientId, providerId);
 
-      // Convert data object to string and store it in state
-      const dataString = JSON.stringify(data.result || "No data found", null, 2);
-      console.log("Patient Data (stringified):", dataString);
+      // Extracting only the result from the response and stringify it
+      const resultData = JSON.stringify(data.result || "No data found", null, 2);
+      console.log("Patient Data (stringified):", resultData);
 
-      // Set the stringified data into patientData state
-      setPatientData(dataString);
+      // Set only the result in patientData state
+      setPatientData(resultData);
     } catch (err) {
       console.error("Error fetching patient data:", err);
     }
@@ -99,7 +99,7 @@ export default function HomePage() {
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700">Patient Data</label>
         <textarea
-          value={patientData} // Display stringified patient data
+          value={patientData} // Display the stringified result data
           onChange={(e) => setPatientData(e.target.value)}
           placeholder="Enter Patient Data"
           className="input mb-4"
