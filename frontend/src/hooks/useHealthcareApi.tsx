@@ -52,9 +52,9 @@ export const useHealthcareApi = () => {
     }
   };
 
-  const getPatientData = async (patientId: string) => {
+  const getPatientData = async (patientId: string,providerId:string) => {
     const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/query/ZNd9fzZRIFt5o4yOFIp9E7BQxxomqioz1727028811273/GetPatientData`;
-    const args = { patientId };
+    const args = { patientId, providerId};
     return callApi(endpoint, args);
   };
 

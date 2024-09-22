@@ -12,7 +12,7 @@ export default function HomePage() {
 
   const handleGetPatientData = async () => {
     try {
-      const data = await getPatientData(patientId);
+      const data = await getPatientData(patientId,providerId);
       console.log("Patient Data:", data);
       setPatientData(data.result || "No data found");
     } catch (err) {
