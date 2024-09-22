@@ -41,7 +41,7 @@ export default function HomePage() {
 
   const handleSetConsentStatus = async () => {
     try {
-      const data = await setConsentStatus(patientId, providerId, consent);
+      const data = await setConsentStatus(patientId, providerId, "true");
       console.log("Set Consent Status:", data);
     } catch (err) {
       console.error("Error setting consent status:", err);
