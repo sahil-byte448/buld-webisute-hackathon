@@ -6,27 +6,29 @@ import { useHealthcareApi } from "../hooks/useHealthcareApi";
 export default function HomePage() {
   const [patientId, setPatientId] = useState("");
   const [providerId, setProviderId] = useState("");
-  const [patientData, setPatientData] = useState(""); // State for patient data as string
+  const [patientData, setPatientData] = useState(""); // State for patient data
   const [consent, setConsent] = useState(false);
   const { getPatientData, sharePatientData, getConsentStatus, setConsentStatus, loading, error } = useHealthcareApi();
 
-  // Function to fetch patient data
   const handleGetPatientData = async () => {
     try {
       const data = await getPatientData(patientId, providerId);
 
-      // Extracting only the result from the response and stringify it
-      const resultData = JSON.stringify(data.result || "No data found", null, 2);
-      console.log("Patient Data (stringified):", resultData);
+      // Checking if data and result exist
+      if (data && data.result) {
+        // Logging the result to ensure we're capturing the right data
+        console.log("Patient Data Result:", data.result);
 
-      // Set only the result in patientData state
-      setPatientData(resultData);
+        // Set only the result in patientData state
+        setPatientData(JSON.stringify(data.result, null, 2)); // Stringify for display in textarea
+      } else {
+        setPatientData("No data found");
+      }
     } catch (err) {
       console.error("Error fetching patient data:", err);
     }
   };
 
-  // Function to share patient data
   const handleSharePatientData = async () => {
     try {
       const data = await sharePatientData(patientId, providerId, patientData);
@@ -36,7 +38,6 @@ export default function HomePage() {
     }
   };
 
-  // Function to fetch consent status
   const handleGetConsentStatus = async () => {
     try {
       const data = await getConsentStatus(patientId, providerId);
@@ -47,7 +48,6 @@ export default function HomePage() {
     }
   };
 
-  // Function to set consent status
   const handleSetConsentStatus = async () => {
     try {
       const data = await setConsentStatus(patientId, providerId, "true");
