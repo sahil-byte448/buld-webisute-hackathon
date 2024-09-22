@@ -60,7 +60,7 @@ func (h *HealthcareContract) SharePatientData(ctx kalpsdk.TransactionContextInte
 }
 
 // GetPatientData retrieves the patient data shared with a specific provider
-func (h *HealthcareContract) GetPatientData(ctx kalpsdk.TransactionContextInterface, patientId string, providerId string) ([]byte, error) {
+func (h *HealthcareContract) GetPatientData(ctx kalpsdk.TransactionContextInterface, patientId string, providerId string) ([]interface{}, error) {
 	h.Logger.Info(fmt.Sprintf("Getting data for patient %s shared with provider %s", patientId, providerId))
 	dataKey := fmt.Sprintf("data-%s-%s", patientId, providerId)
 	dataBytes, err := ctx.GetState(dataKey)
@@ -70,5 +70,8 @@ func (h *HealthcareContract) GetPatientData(ctx kalpsdk.TransactionContextInterf
 	if dataBytes == nil {
 		return nil, fmt.Errorf("no data found for patient %s and provider %s", patientId, providerId)
 	}
-	return dataBytes, nil
+
+	// Convert the byte data to the expected type (if applicable)
+	// Assuming the API expects an array, you can wrap the data:
+	return []interface{}{string(dataBytes)}, nil
 }

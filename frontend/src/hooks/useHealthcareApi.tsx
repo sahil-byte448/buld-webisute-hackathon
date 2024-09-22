@@ -53,25 +53,25 @@ export const useHealthcareApi = () => {
   };
 
   const getPatientData = async (patientId: string) => {
-    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/query/t0Pvt1orkveN1k31LjAPkyPpSPsvx2zY1727014396834/Init`;
+    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/query/ZNd9fzZRIFt5o4yOFIp9E7BQxxomqioz1727028811273/Init`;
     const args = { patientId };
     return callApi(endpoint, args);
   };
 
   const sharePatientData = async (patientId: string, providerId: string, data: any) => {
-    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/invoke/t0Pvt1orkveN1k31LjAPkyPpSPsvx2zY1727014396834/SharePatientData`;
+    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/invoke/ZNd9fzZRIFt5o4yOFIp9E7BQxxomqioz1727028811273/SharePatientData`;
     const args = { patientId, providerId, data };
     return callApi(endpoint, args);
   };
 
   const getConsentStatus = async (patientId: string, providerId: string) => {
-    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/query/t0Pvt1orkveN1k31LjAPkyPpSPsvx2zY1727014396834/GetConsentStatus`;
+    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/query/ZNd9fzZRIFt5o4yOFIp9E7BQxxomqioz1727028811273/GetConsentStatus`;
     const args = { patientId, providerId };
     return callApi(endpoint, args);
   };
 
   const setConsentStatus = async (patientId: string, providerId: string, consent: boolean) => {
-    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/invoke/t0Pvt1orkveN1k31LjAPkyPpSPsvx2zY1727014396834/SetConsentStatus`;
+    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/invoke/ZNd9fzZRIFt5o4yOFIp9E7BQxxomqioz1727028811273/SetConsentStatus`;
     const args = { patientId, providerId, consent };
     return callApi(endpoint, args);
   };
