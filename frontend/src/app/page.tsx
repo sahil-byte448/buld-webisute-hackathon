@@ -1,20 +1,25 @@
 // page.tsx
 "use client";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useHealthcareApi } from "../hooks/useHealthcareApi";
 
 export default function HomePage() {
   const [patientId, setPatientId] = useState("");
   const [providerId, setProviderId] = useState("");
-  const [patientData, setPatientData] = useState("");
+  const [patientData, setPatientData] = useState(""); // State for patient data
   const [consent, setConsent] = useState(false);
   const { getPatientData, sharePatientData, getConsentStatus, setConsentStatus, loading, error } = useHealthcareApi();
 
   const handleGetPatientData = async () => {
     try {
-      const data = await getPatientData(patientId,providerId);
+      // Fetching the data using getPatientData
+      const data = await getPatientData(patientId, providerId);
+
+      // Logging the data to the console as a string
       console.log("Patient Data (stringified):", JSON.stringify(data, null, 2));
-      setPatientData(data || "No data found"); //data.result || "No data found"
+
+      // Setting the data in state, handling the case where no result is found
+      setPatientData(data || "No data found");
     } catch (err) {
       console.error("Error fetching patient data:", err);
     }
@@ -115,4 +120,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 
