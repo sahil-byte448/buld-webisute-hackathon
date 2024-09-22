@@ -6,25 +6,27 @@ import { useHealthcareApi } from "../hooks/useHealthcareApi";
 export default function HomePage() {
   const [patientId, setPatientId] = useState("");
   const [providerId, setProviderId] = useState("");
-  const [patientData, setPatientData] = useState(""); // State for patient data
+  const [patientData, setPatientData] = useState(""); // State for patient data as string
   const [consent, setConsent] = useState(false);
   const { getPatientData, sharePatientData, getConsentStatus, setConsentStatus, loading, error } = useHealthcareApi();
 
+  // Function to fetch patient data
   const handleGetPatientData = async () => {
     try {
-      // Fetching the data using getPatientData
       const data = await getPatientData(patientId, providerId);
 
-      // Logging the data to the console as a string
-      console.log("Patient Data (stringified):", JSON.stringify(data, null, 2));
+      // Convert data object to string and store it in state
+      const dataString = JSON.stringify(data.result || "No data found", null, 2);
+      console.log("Patient Data (stringified):", dataString);
 
-      // Setting the data in state, handling the case where no result is found
-      setPatientData(data || "No data found");
+      // Set the stringified data into patientData state
+      setPatientData(dataString);
     } catch (err) {
       console.error("Error fetching patient data:", err);
     }
   };
 
+  // Function to share patient data
   const handleSharePatientData = async () => {
     try {
       const data = await sharePatientData(patientId, providerId, patientData);
@@ -34,6 +36,7 @@ export default function HomePage() {
     }
   };
 
+  // Function to fetch consent status
   const handleGetConsentStatus = async () => {
     try {
       const data = await getConsentStatus(patientId, providerId);
@@ -44,6 +47,7 @@ export default function HomePage() {
     }
   };
 
+  // Function to set consent status
   const handleSetConsentStatus = async () => {
     try {
       const data = await setConsentStatus(patientId, providerId, "true");
@@ -95,7 +99,7 @@ export default function HomePage() {
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700">Patient Data</label>
         <textarea
-          value={patientData}
+          value={patientData} // Display stringified patient data
           onChange={(e) => setPatientData(e.target.value)}
           placeholder="Enter Patient Data"
           className="input mb-4"
@@ -120,5 +124,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-
