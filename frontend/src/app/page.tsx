@@ -14,7 +14,7 @@ export default function HomePage() {
     try {
       const data = await getPatientData(patientId,providerId);
       console.log("Patient Data (stringified):", JSON.stringify(data, null, 2));
-      setPatientData(data.result || "No data found");
+      setPatientData(patientData); //data.result || "No data found"
     } catch (err) {
       console.error("Error fetching patient data:", err);
     }
