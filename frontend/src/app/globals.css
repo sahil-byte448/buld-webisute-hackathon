@@ -1,76 +1,65 @@
 /* global.css */
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f9fafb, #e3f2fd); /* Gradient background */
+  font-family: 'Poppins', sans-serif; /* Use a modern font like Poppins */
+  background-color: #f0f4f8; /* Softer background color */
   color: #333;
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; /* Smooth transitions */
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1100px; /* Reduced max-width for better readability */
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem; /* Added more padding for a cleaner look */
   background-color: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deeper shadow */
-  border-radius: 12px; /* Increased border-radius for softer edges */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  border-radius: 8px;
   transition: box-shadow 0.3s ease;
-  background: linear-gradient(135deg, #fff, #f3f3f3); /* Light gradient for a clean look */
 }
 
 .container:hover {
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Slightly more pronounced hover shadow */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Elevate on hover */
 }
 
 input, textarea {
   width: 100%;
-  padding: 1rem; /* Increased padding for more spacious input */
+  padding: 0.75rem; /* Increase padding for more comfortable input fields */
   border: 1px solid #ccc;
-  border-radius: 8px; /* More rounded corners */
-  margin-bottom: 1.5rem; /* Extra margin for better spacing */
-  font-size: 1.1rem; /* Slightly bigger font for clarity */
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-  background-color: #f9fafb; /* Light background for inputs */
+  border-radius: 6px; /* Smooth border */
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
 }
 
 input:focus, textarea:focus {
-  border-color: #007bff;
-  background-color: #e3f2fd; /* Subtle color change on focus */
+  border-color: #007bff; /* Add focus effect */
   outline: none;
-}
-
-input.large, textarea.large {
-  height: 3rem; /* Larger height for patient data inputs */
-}
-
-textarea.large {
-  height: 8rem; /* Larger height for multi-line inputs */
 }
 
 .btn {
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 50px; /* Rounded pill-shaped buttons */
   cursor: pointer;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: uppercase; /* Make buttons more prominent */
   transition: background-color 0.3s ease, transform 0.3s ease;
   display: inline-block;
-  background-image: linear-gradient(135deg, #007bff, #00c6ff); /* Creative blue gradient */
-  color: white;
 }
 
 .btn-primary {
-  background-image: linear-gradient(135deg, #007bff, #00c6ff); /* Gradient for primary button */
+  background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient for buttons */
+  color: white;
 }
 
 .btn-secondary {
-  background-image: linear-gradient(135deg, #6c757d, #b3b3b3); /* Subtle gradient for secondary */
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  color: white;
 }
 
 .btn:hover {
-  transform: scale(1.1); /* Slightly larger scaling on hover */
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
 .btn:disabled {
@@ -78,28 +67,30 @@ textarea.large {
   cursor: not-allowed;
 }
 
-/* Enhanced typography for creative headings */
+.btn-primary:disabled {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+.btn-secondary:disabled {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+}
+
+/* Typography enhancements */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif; /* More modern heading font */
   margin-bottom: 1rem;
-  color: #2c3e50; /* Darker color for contrast */
 }
 
 h1 {
-  font-size: 2.75rem;
-  color: #007bff; /* Vibrant blue for h1 */
+  font-size: 2.5rem;
+  color: #212529;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 2.25rem;
-  font-weight: 600;
+  font-size: 2rem;
   color: #343a40;
-}
-
-h3 {
-  font-size: 1.75rem;
-  color: #5a5a5a;
+  font-weight: 600;
 }
 
 /* Subtle animations */
@@ -115,57 +106,8 @@ h3 {
 }
 
 .container {
-  animation: fadeIn 0.7s ease-out;
+  animation: fadeIn 0.8s ease-out;
 }
 
-/* Background enhancements */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Subtle texture background */
-  opacity: 0.1; /* Light opacity for texture */
-  z-index: -1;
-}
 
-/* Button styles for interaction */
-.btn-gradient {
-  background: linear-gradient(45deg, #ff6b6b, #f94d6a);
-  color: #fff;
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(45deg, #f94d6a, #ff6b6b);
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  border: 2px solid #007bff;
-  color: #007bff;
-  background: transparent;
-}
-
-.btn-outline:hover {
-  background-color: #007bff;
-  color: white;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    padding: 1.5rem;
-    border-radius: 10px;
-  }
-
-  input, textarea {
-    font-size: 1rem;
-  }
-
-  .btn {
-    padding: 0.5rem 1rem;
-  }
-}
 
